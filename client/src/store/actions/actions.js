@@ -1,4 +1,4 @@
-import  {NEWS_RECEIVED, NEWSITEM_RECEIVED} from '../constants/actionTypes'
+import { NEWS_RECEIVED, NEWSITEM_RECEIVED, NEWSITEM_LOADING } from '../constants/actionTypes'
 
 export function newsReceived(news) {
     return {
@@ -6,10 +6,17 @@ export function newsReceived(news) {
         news: news
     }
 }
- 
-export function fetchNews(fakeNews) {
+
+export function fetchNews() {
     return dispatch => {
-        dispatch(newsReceived(fakeNews))
+        return fetch('/news').then((response) => {
+            return response.json()
+        }).then((response) => {
+            console.log(response)
+            dispatch(newsReceived(response.data))
+        }).catch((e) => {
+            console.log(e)
+        })
     }
 }
 
@@ -18,8 +25,18 @@ export const newsItemReceived = (newsItem) => ({
     newsItem: newsItem
 })
 
-export function fetchNewItems(fakeNewsItem) {
+export function fetchNewItems(id) {
     return dispatch => {
-        dispatch(newsItemReceived(fakeNewsItem))
+        return fetch(`/news/${id}`)
+        .then((response) => response.json())
+        .then((response) => {
+            return dispatch(newsItemReceived(response.data))
+        }).catch((e)=> console.log(e))
+    }
+}
+
+export function newsItemLoading() {
+    return {
+        type: NEWSITEM_LOADING
     }
 }

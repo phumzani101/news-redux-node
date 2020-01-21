@@ -1,8 +1,9 @@
-import { NEWS_RECEIVED, NEWSITEM_RECEIVED } from "../constants/actionTypes";
+import { NEWS_RECEIVED, NEWSITEM_RECEIVED, NEWSITEM_LOADING } from "../constants/actionTypes";
 
 let initialState = {
     news: [],
-    newsItem: {}
+    newsItem: {},
+    newsItemLoading: true
 }
 
 export default function (state = initialState, action) {
@@ -15,6 +16,10 @@ export default function (state = initialState, action) {
             return updated
         case NEWSITEM_RECEIVED:
             updated['newsItem'] = action.newsItem
+            updated['newsItemLoading'] = false
+            return updated
+        case NEWSITEM_LOADING:
+            updated['newsItemLoading'] = true
             return updated
         default:
             return state;
