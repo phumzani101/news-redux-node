@@ -8,7 +8,7 @@ export default class NewsItemListing extends Component {
         return (
             <div>
                 <div>
-                    <Link to={`/news/${data.id}`}>
+                    <Link to={`/news/${data._id}`}>
                         <h4>{data.title}</h4>
                     </Link>
                 </div>

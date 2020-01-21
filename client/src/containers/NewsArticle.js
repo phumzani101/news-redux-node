@@ -15,7 +15,7 @@ class NewsArticle extends Component {
             <div>
                 <h2>News Story</h2>
                 <ul>
-                    {newsItemLoading ? (
+                    {!newsItemLoading ? (
                         <NewsItemDetail data={newsItem} />
                     ) : (
                             <p>News Loading......</p>

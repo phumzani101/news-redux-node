@@ -6,6 +6,7 @@ import Layout from './layouts/Layout';
 import { Provider } from 'react-redux'
 import store from './store/index'
 import NewsArticle from './containers/NewsArticle';
+import NewsSubmit from './containers/NewsSubmit';
 
 function App() {
 	return (
@@ -13,6 +14,7 @@ function App() {
 			<BrowserRouter>
 				<Layout>
 					<Switch>
+						<Route path="/news/submit" component={NewsSubmit} />
 						<Route path="/news/:id" component={NewsArticle} />
 						<Route path="/about" component={About} />
 						<Route path="/" component={Home} />

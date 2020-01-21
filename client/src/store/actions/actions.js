@@ -1,4 +1,4 @@
-import { NEWS_RECEIVED, NEWSITEM_RECEIVED, NEWSITEM_LOADING } from '../constants/actionTypes'
+import { NEWS_RECEIVED, NEWSITEM_RECEIVED, NEWSITEM_LOADING, NEWS_SUBMIT } from '../constants/actionTypes'
 
 export function newsReceived(news) {
     return {
@@ -12,7 +12,7 @@ export function fetchNews() {
         return fetch('/news').then((response) => {
             return response.json()
         }).then((response) => {
-            console.log(response)
+            //console.log(response)
             dispatch(newsReceived(response.data))
         }).catch((e) => {
             console.log(e)
@@ -30,6 +30,7 @@ export function fetchNewItems(id) {
         return fetch(`/news/${id}`)
         .then((response) => response.json())
         .then((response) => {
+            //console.log(response)
             return dispatch(newsItemReceived(response.data))
         }).catch((e)=> console.log(e))
     }
@@ -38,5 +39,29 @@ export function fetchNewItems(id) {
 export function newsItemLoading() {
     return {
         type: NEWSITEM_LOADING
+    }
+}
+
+export function newsSubmit() {
+    return {
+        type: NEWS_SUBMIT
+    }
+}
+
+export function submitNewsStory(data) {
+    return dispatch => {
+        return fetch('/news', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+            body: JSON.stringify(data), 
+            mode: 'cors'
+        }).then((data) => {
+            dispatch(newsSubmit())
+        }).catch((e) => {
+            console.log(e)
+        })
     }
 }
