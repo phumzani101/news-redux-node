@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+const Comment = require('./comment.model').schema
+
 const NewsSchema = new Schema({
     title: String,
     teaser: String,
@@ -8,8 +10,10 @@ const NewsSchema = new Schema({
     status: {
         type: Number,
         default: 1
-      }
-}, {
+    },
+    comments: [Comment]
+}, 
+{
     timestamps: true
 })
 
