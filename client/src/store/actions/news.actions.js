@@ -1,4 +1,4 @@
-import { NEWS_RECEIVED, NEWSITEM_RECEIVED, NEWSITEM_LOADING, NEWS_SUBMIT } from '../constants/actionTypes'
+import { NEWS_RECEIVED, NEWSITEM_RECEIVED, NEWSITEM_LOADING, NEWS_SUBMIT, NEWS_ADDCOMMENT } from '../constants/actionTypes'
 
 export function newsReceived(news) {
     return {
@@ -28,11 +28,11 @@ export const newsItemReceived = (newsItem) => ({
 export function fetchNewItems(id) {
     return dispatch => {
         return fetch(`/news/${id}`)
-        .then((response) => response.json())
-        .then((response) => {
-            //console.log(response)
-            return dispatch(newsItemReceived(response.data))
-        }).catch((e)=> console.log(e))
+            .then((response) => response.json())
+            .then((response) => {
+                //console.log(response)
+                return dispatch(newsItemReceived(response.data))
+            }).catch((e) => console.log(e))
     }
 }
 
@@ -55,13 +55,46 @@ export function submitNewsStory(data) {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-              },
-            body: JSON.stringify(data), 
+            },
+            body: JSON.stringify(data),
             mode: 'cors'
         }).then((data) => {
             dispatch(newsSubmit())
         }).catch((e) => {
             console.log(e)
         })
+    }
+}
+
+function addComment(username, body) {
+    return {
+        type: NEWS_ADDCOMMENT,
+        username: username,
+        body: body
+    }
+}
+
+export function submitComment(newsItemID, username, data) {
+
+    const token = localStorage.getItem('token') || null
+
+    return dispatch => {
+        return fetch(`/news/${newsItemID}/comment`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(data),
+            mode: 'cors'
+        }).then((response) => {
+            if (!response.ok) {
+                throw Error(response.statusText);
+            } else {
+
+                dispatch(addComment(username, data.body))
+            }
+        }).catch((e) => console.log(e))
     }
 }

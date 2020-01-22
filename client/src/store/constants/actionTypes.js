@@ -6,3 +6,5 @@ export const NEWS_SUBMIT = 'NEWS_SUBMIT'
 export const USER_REGISTERED = 'USER_REGISTERED'
 export const USER_LOGGEDIN = 'USER_LOGGEDIN'
 export const USER_LOGOUT = 'USER_LOGOUT'
+
+export const NEWS_ADDCOMMENT = '  NEWS_ADDCOMMENT'

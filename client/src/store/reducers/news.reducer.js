@@ -1,4 +1,4 @@
-import { NEWS_RECEIVED, NEWSITEM_RECEIVED, NEWSITEM_LOADING, NEWS_SUBMIT } from "../constants/actionTypes";
+import { NEWS_RECEIVED, NEWSITEM_RECEIVED, NEWSITEM_LOADING, NEWS_SUBMIT, NEWS_ADDCOMMENT } from "../constants/actionTypes";
 
 let initialState = {
     news: [],
@@ -22,6 +22,14 @@ export default function (state = initialState, action) {
         case NEWSITEM_LOADING:
             updated['newsItemLoading'] = true
             return updated
+
+        case NEWS_ADDCOMMENT:
+            const updatedComments = Object.assign([], updated['newsItem'].comments)
+
+            updatedComments.push({'username': action.username, 'body': action.body})
+            updated['newsItem'].comments = updatedComments
+            return updated
+            
         default:
             return state;
     }
