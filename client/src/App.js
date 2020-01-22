@@ -7,6 +7,8 @@ import { Provider } from 'react-redux'
 import store from './store/index'
 import NewsArticle from './containers/NewsArticle';
 import NewsSubmit from './containers/NewsSubmit';
+import Login from './presentation/Login';
+import Register from './presentation/Register';
 
 function App() {
 	return (
@@ -17,6 +19,8 @@ function App() {
 						<Route path="/news/submit" component={NewsSubmit} />
 						<Route path="/news/:id" component={NewsArticle} />
 						<Route path="/about" component={About} />
+						<Route path="/login" component={Login} />
+						<Route path="/register" component={Register} />
 						<Route path="/" component={Home} />
 					</Switch>
 				</Layout>
