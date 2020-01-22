@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Authentication from '../containers/Authentication'
 
 export default class Layout extends Component {
     render() {
@@ -14,6 +15,7 @@ export default class Layout extends Component {
                         <li><Link to="/about">About</Link></li>
                         <li><Link to="/news/submit">Submit News</Link></li>
                     </ul>
+                    <Authentication />
                 </div>
                 <div>
                     {this.props.children}

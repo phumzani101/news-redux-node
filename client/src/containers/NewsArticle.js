@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { fetchNewItems } from '../store/actions/actions'
+import { fetchNewItems } from '../store/actions/news.actions'
 import NewsItemDetail from '../presentation/NewsItemDetail'
 import { connect } from 'react-redux'
 

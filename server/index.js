@@ -6,6 +6,7 @@ require('dotenv').config()
 
 const indexRoutes = require('./routes/index')
 const newsRoutes = require('./routes/news')
+const authRoutes = require('./routes/auth')
 
 const app = express()
 const PORT = process.env.PORT || 4000
@@ -28,6 +29,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 app.use('/', indexRoutes);
 app.use('/news', newsRoutes)
+app.use('/user', authRoutes)
 
 app.listen(PORT, () => {
     console.log('Listening on port ' + PORT)

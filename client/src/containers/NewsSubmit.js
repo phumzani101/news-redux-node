@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { submitNewsStory } from '../store/actions/actions'
+import { submitNewsStory } from '../store/actions/news.actions'
 
 class NewsSubmit extends Component {
     constructor(props) {
