@@ -4,11 +4,9 @@ This a React/Redux/Node/Express/Mongodb/ project just learning how use the stack
 
 `cd server`
  and run 
- `npm i` 
+ `npm i` to install dependencies
  then 
- `npm run start-server` 
-Runs the server at development mode.<br />
-Open [http://localhost:4000](http://localhost:4000) to view it in the browser.
+ `npm run start-server` to the server at development mode at [http://localhost:4000](http://localhost:4000)
 
 ## To Run The Client App
 
@@ -16,6 +14,5 @@ Open [http://localhost:4000](http://localhost:4000) to view it in the browser.
 and run 
 `npm i` 
 then 
-`npm run start-client` to start to start the app
-Runs the app in the development mode.<br />
+`npm run start-client` to start to run the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
