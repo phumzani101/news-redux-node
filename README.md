@@ -1,4 +1,4 @@
-This a React/Redux/Node/Express/Mongodb/ project just learning how use the stack.
+React/Redux/Node/Express/Mongodb/ project to learn how use the stack.
 
 ## To Run The Server
 
